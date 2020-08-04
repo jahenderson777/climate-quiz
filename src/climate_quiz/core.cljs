@@ -6,7 +6,10 @@
             ;[cljs-bean.core :as bean]
             ["react" :as react]
             ["framer-motion" :refer [motion AnimatePresence useAnimation]]
+            ["smoothscroll-polyfill" :as smooth]
             ))
+
+
 
 (set! *warn-on-infer* true)
 
@@ -199,6 +202,7 @@
      [complete-block])])
 
 (defn init-fn []
+  (.polyfill smooth)
   (xf/dispatch [:db/init]))
 
 (defn start []
