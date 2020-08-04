@@ -1,0 +1,10 @@
+{:deps true
+
+ :dev-http {3000 ["resources/public"]}
+ 
+ :builds
+ {:app {:asset-path "/js"
+        :modules {:main {:entries [climate-quiz.core]}}
+        :output-dir "resources/public/js"
+        :init-ns climate-quiz.core
+        :target :browser}}}

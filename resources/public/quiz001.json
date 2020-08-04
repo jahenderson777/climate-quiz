@@ -1,0 +1,44 @@
+{
+    "quiz": [
+        {
+            "question": "The UK government has set a target for ‘zero carbon’ by 2050. Scientists say meeting this target will",
+            "answers": [
+                "save us from climate breakdown",
+                "minimise damage done by climate breakdown",
+                "be nowhere near enough to prevent climate breakdown"
+            ],
+            "correct-index": 2
+        },
+        {
+            "question": "Insects feed many birds. Since 1986, the total weight of flying insects in nature reserves has declined",
+            "answers": [
+                "a little",
+                "by 20%",
+                "by 50%",
+                "by 76%"
+            ],
+            "correct-index": 3
+        },
+        {
+            "question": "Under the ‘Paris agreement’, 197 countries made pledges that try to keep the global average temperature rise to less than 2 C by 2100. How many developed countries have initiated plans that meet their pledges?",
+            "answers": [
+                "none",
+                "only a few",
+                "almost half",
+                "more than half",
+                "nearly all"
+            ],
+            "correct-index": 0
+        },
+        {
+            "question": "2° warming doesn’t sound like much. Why does it matter?",
+            "answers": [
+                "It doesn't matter",
+                "It will increase levels of sunburn and skin cancer",
+                "Extreme droughts, floods and hurricanes, will cause destruction, reduce food production, and create refugees",
+                "It will increase the hole in the ozone layer"
+            ],
+            "correct-index": 2
+        }
+    ]
+}
