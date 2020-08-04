@@ -187,10 +187,11 @@
 (defn help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(151, 152, 68)"}
    [:div {:style {:color "#fff"}}
-    [:h1 "Please help"]
+  
     [:h2 "Enter your email"]
-    [:div {:style {:text-align "center"}}
-     [:input {:type "text" :name "email" :placeholder "Email"}]]
+    [:input {:type "text" :name "email" :placeholder "Email"}]
+    
+  
     [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
      "SIGN"]]])
 
@@ -212,11 +213,14 @@
       
       (when (<sub [:complete?])
         [:<>
+         ^{:key -1}
          [ask-for-help-block]
          (when user-will-help
+           ^{:key -2}
            [help-block])
          (when (or user-helped
                    (= false user-will-help))
+           ^{:key -3}
            [complete-block])])]]))
 
 (defn init-fn []
