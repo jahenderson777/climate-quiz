@@ -109,20 +109,32 @@
                                (str (hsl h s l a) " " pct-pos "% "))))
        ")"))
 
+(def colors 
+  ["rgb(247, 238, 106)"
+   "rgb(117, 208, 241)"
+   "rgb(237, 155, 196)"
+   ;"rgb(152, 98, 151)"
+   "rgb(190, 210, 118)"
+   "rgb(255, 193, 80)"
+   "rgb(207, 98, 151)"
+   "rgb(230, 89, 80)"
+   "rgb(86, 146, 220)"
+   "rgb(220, 80, 170)"])
+
 (defn answer-component [idx answer q-id selected]
   [:> (.-div motion) {:class "answer"
                       :initial #js {:opacity 0}
                       :animate #js {:opacity 1}
                       :transition #js {:duration 0.20
                                        :delay (+ 0.35 (* idx 0.2))}
-                      :style {:background-color (when (= idx selected) "#0f0")}
+                      :style {:background-color (when (= idx selected) "#98f")}
                       :on-click #(xf/dispatch [:select-answer q-id idx])}
    [:> (.-div motion)
-    {:whileHover #js {:x 33}
-     :whileTap #js {:x 33}}
+    {:whileHover #js {:opacity 0.5}
+     :whileTap #js {:opacity 0.5}}
     answer]])
 
-(defn slide [{:keys [hue dir]} & content]
+(defn slide [{:keys [hue dir bg]} & content]
   (let [ref (uix/ref)]
     (uix/effect! (fn []
                    (js/window.scrollTo #js {:left 0
@@ -131,7 +143,8 @@
                  [])
     [:div.slide {:ref ref
                  :style {:min-height (second (<sub [:get :window-size]))
-                         :background (gradient dir
+                         :background-color bg
+                         #_#_:background (gradient dir
                                                [hue 10 90 1 0]
                                                [hue 10 90 1 60]
                                                [0 70 88 1 100])}}
@@ -140,7 +153,8 @@
 
 (defn question [q-id]
   (let [{:keys [question answers correct-index selected]} (<sub [:get :quiz q-id])]
-    [slide {:hue (* 90 q-id)
+    [slide {:bg (nth colors (mod q-id (count colors)))
+            :hue (* 90 q-id)
             :dir (if (even? q-id) 90 270)}
      [:div.progress {:style {:padding 20
                              :text-align "center"}}
@@ -153,19 +167,27 @@
       answers)]))
 
 (defn complete-block []
-  [slide {:hue 300 :dir 180}
-   [:h1 "Quiz complete!"]
-   [:h2 (str "you scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]])
+  [slide {:hue 300 :dir 180 :bg "rgb(152, 68, 151)"}
+   [:div {:style {:color "#fff"}}
+    [:h1 "Quiz complete!"]
+    [:h2 (str "You scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]]])
 
 (defn main []
-  [:div#content
-   (for [q-id (range (min (<sub [:current-question])
-                          (<sub [:num-questions])))]
-     ^{:key q-id}
-     [question q-id])
-   
-   (when (<sub [:complete?])
-     [complete-block])])
+  [:<>
+   [:header {:style {:position "fixed"
+                     :height 70
+                     :background-color (hsl 20 20 10)
+                     :width "100%"
+                     :z-index 1000}}
+    "CLIMATE QUIZ"]
+   [:div#content
+    (for [q-id (range (min (<sub [:current-question])
+                           (<sub [:num-questions])))]
+      ^{:key q-id}
+      [question q-id])
+    
+    (when (<sub [:complete?])
+      [complete-block])]])
 
 (defn init-fn []
   (.polyfill smooth)

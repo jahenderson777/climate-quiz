@@ -1,3 +1,11 @@
+@font-face{
+    font-family:"FucXed";
+    font-style:normal;
+    font-weight:normal;
+    src:url("fucxedcaps-v3-webfont.woff2") format("woff2"),url("../fonts/fucxedcaps-v3-webfont.woff") format("woff");
+    font-display:swap
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -26,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
     font-size: 16pt;
-    font-family: Tahoma, sans-serif;
+    font-family: 'Crimson Text', serif;
 }
 ol, ul {
 	list-style: none;
@@ -48,12 +56,13 @@ h1 {
     font-size: 3rem;
     text-align: center;
     padding: 40px;
+    font-weight: 700;
 }
 h2 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     margin-bottom: 0px;
-    
-    padding: 40px;
+    font-weight: 700;
+    padding: 35px;
     padding-top: 20px;
     line-height: 2.8rem; 
 }
@@ -62,6 +71,10 @@ h3 {
 }
 h4 {
     font-size: 1.3rem;
+}
+
+div.slide {
+    padding-top: 100px;
 }
 
 div.slide-inner {
@@ -73,9 +86,19 @@ div.answer {
     cursor:pointer;
     padding: 19px;
     margin: 32px;
-    background-color: hsla(170, 39%, 89.4%, 1);
+    background-color: hsla(170, 39%, 100%, 1);
 }
 
 div.progress {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    
+}
+
+header {
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 2.4rem;
+    font-family:"FucXed";
 }

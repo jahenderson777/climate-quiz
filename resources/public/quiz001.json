@@ -1,7 +1,7 @@
 {
     "quiz": [
         {
-            "question": "The UK government has set a target for ‘zero carbon’ by 2050. Scientists say meeting this target will",
+            "question": "The UK government has set a target for ‘zero carbon’ by 2050. Scientists say meeting this target will...",
             "answers": [
                 "save us from climate breakdown",
                 "minimise damage done by climate breakdown",
@@ -10,7 +10,7 @@
             "correct-index": 2
         },
         {
-            "question": "Insects feed many birds. Since 1986, the total weight of flying insects in nature reserves has declined",
+            "question": "Insects feed many birds. Since 1986, the total weight of flying insects in nature reserves has declined...",
             "answers": [
                 "a little",
                 "by 20%",
@@ -37,6 +37,116 @@
                 "It will increase levels of sunburn and skin cancer",
                 "Extreme droughts, floods and hurricanes, will cause destruction, reduce food production, and create refugees",
                 "It will increase the hole in the ozone layer"
+            ],
+            "correct-index": 2
+        },
+        {
+            "question": "If all countries keep their Paris pledges what will be the average global temperature anomaly by 2100?",
+            "answers": [
+                "1.2 C",
+                "1.7 C",
+                "2.0 C",
+                "2.2 C",
+                "3.0 C"
+            ],
+            "correct-index": 4
+        },
+        {
+            "question": "In Europe, how many people were killed by the 2003 heatwave?",
+            "answers": [
+                "500",
+                "15,000",
+                "35,000",
+                "70,000"
+            ],
+            "correct-index": 3
+        },
+        {
+            "question": "Is the cost of avoiding climate breakdown more or less than the cost of all the subsidies paid to the fossil fuel industry?",
+            "answers": [
+                "less",
+                "about the same",
+                "more",
+                "a lot more"
+            ],
+            "correct-index": 0
+        },
+        {
+            "question": "Which is cheaper, preventing climate breakdown, or dealing with its consequences?",
+            "answers": [
+                "preventing it",
+                "dealing with it",
+                "costs are about the same"                
+            ],
+            "correct-index": 0
+        },
+        {
+            "question": "Extinction is taking place 10 to 100 times faster than normal. How many animal and plant species are threatened with extinction?",
+            "answers": [
+                "100",
+                "1,000",
+                "half a million",
+                "1 million"
+            ],
+            "correct-index": 3
+        },
+        {
+            "question": "Insects are vital for pollinating our crops. What percentage of global food crops at least partly rely on such pollination?",
+            "answers": [
+                "5%",
+                "10%",
+                "55%",
+                "75%",
+                "100%"
+            ],
+            "correct-index": 3
+        },
+        {
+            "question": "Vertebrate animal populations have declined by an average of 60%. Has this happened in the last...",
+            "answers": [
+                "200 years?",
+                "100 years?",
+                "50 years?"
+            ],
+            "correct-index": 2
+        },
+        {
+            "question": "Fish stocks in the oceans are classed as either Crashed, Over-Exploited. Fully-Exploited, or Under-Exploited by mankind. Since 2003, what percentage of fish stocks have remained under-exploited?",
+            "answers": [
+                "50%",
+                "25%",
+                "12%",
+                "0%"
+            ],
+            "correct-index": 3
+        },
+        {
+            "question": "What humankind does over the next 10 years or more to address the climate and ecological crises will have effects that last...",
+            "answers": [
+                "50 years",
+                "100 years",
+                "1000 years",
+                "for more than 1000 years"
+            ],
+            "correct-index": 3
+        },
+        {
+            "question": "If the global average temperature rises above 1.5 C there is a risk of triggering tipping points that release unstoppable and irreversible changes leading to climate breakdown. If carbon emissions are cut by 45% in the next 10 years, and reach zero by 2050, what are the chances of staying below 1.5 C?",
+            "answers": [
+                "very good",
+                "good",
+                "50-50",
+                "poor",
+                "very poor"
+            ],
+            "correct-index": 2
+        },
+        {
+            "question": "Would you put your children and grandchildren on a plane if there was only a 50% chance it would crash?",
+            "answers": [
+                "yes",
+                "possibly",
+                "no"
             ],
             "correct-index": 2
         }
