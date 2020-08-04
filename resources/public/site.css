@@ -89,6 +89,7 @@ div.slide-inner {
 div.answer {
     cursor:pointer;
     padding: 19px;
+    font-size: 25px;
     margin: 32px;
     background-color: hsla(170, 39%, 100%, 1);
 }
