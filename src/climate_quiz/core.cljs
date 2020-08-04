@@ -44,7 +44,8 @@
 (xf/reg-event-db
  :merge
  (fn [db [_ data]]
-   (merge db data)))
+   ;(merge db data)
+   (assoc db :quiz (subvec (:quiz data) 0 3))))
 
 (xf/reg-event-fx
  :select-answer
@@ -169,25 +170,53 @@
 (defn complete-block []
   [slide {:hue 300 :dir 180 :bg "rgb(152, 68, 151)"}
    [:div {:style {:color "#fff"}}
-    [:h1 "Quiz complete!"]
+    [:h1 "Thank you!"]
     [:h2 (str "You scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]]])
 
+(defn ask-for-help-block []
+  [slide {:hue 300 :dir 180 :bg "rgb(68, 151, 152)"}
+   [:div {:style {:color "#fff"}}
+    [:h1 "Quiz complete!"]
+    [:h2 "While you wait for your results will you spare 10 seconds to sign a petition demanding the UK governemnt take more urgent action on the climate emergency?"]
+    [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-will-help] true])}
+     "OF COURSE - ADD MY NAME"]
+    [:button.btn-no {:on-click #(xf/dispatch [:set [:user-will-help] false])} 
+     "NO, SORRY"]]])
+
+(defn help-block []
+  [slide {:hue 300 :dir 180 :bg "rgb(151, 152, 68)"}
+   [:div {:style {:color "#fff"}}
+    [:h1 "Please help"]
+    [:h2 "Enter your email"]
+    [:div {:style {:text-align "center"}}
+     [:input {:type "text" :name "email" :placeholder "Email"}]]
+    [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
+     "SIGN"]]])
+
 (defn main []
-  [:<>
-   [:header {:style {:position "fixed"
-                     :height 70
-                     :background-color (hsl 20 20 10)
-                     :width "100%"
-                     :z-index 1000}}
-    "CLIMATE QUIZ"]
-   [:div#content
-    (for [q-id (range (min (<sub [:current-question])
-                           (<sub [:num-questions])))]
-      ^{:key q-id}
-      [question q-id])
-    
-    (when (<sub [:complete?])
-      [complete-block])]])
+  (let [user-will-help (<sub [:get :user-will-help])
+        user-helped (<sub [:get :user-helped])]
+    [:<>
+     [:header {:style {:position "fixed"
+                       :height 70
+                       :background-color (hsl 20 20 10)
+                       :width "100%"
+                       :z-index 1000}}
+      "CLIMATE QUIZ"]
+     [:div#content
+      (for [q-id (range (min (<sub [:current-question])
+                             (<sub [:num-questions])))]
+        ^{:key q-id}
+        [question q-id])
+      
+      (when (<sub [:complete?])
+        [:<>
+         [ask-for-help-block]
+         (when user-will-help
+           [help-block])
+         (when (or user-helped
+                   (= false user-will-help))
+           [complete-block])])]]))
 
 (defn init-fn []
   (.polyfill smooth)

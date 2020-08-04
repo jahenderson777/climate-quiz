@@ -102,3 +102,56 @@ header {
     font-size: 2.4rem;
     font-family:"FucXed";
 }
+
+.btn-sign {
+    width: 305px;
+    max-width: 100%;
+    margin: 50px auto 20px;
+    padding: 16px;
+    border: none;
+    outline: none;
+    display: block;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 1.33;
+    text-align: center;
+    color: #393e41;
+    background-color: rgb(60, 200, 85);
+    font-family:"FucXed";
+}
+
+.btn-no {
+    width: 305px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 16px;
+    border: none;
+    outline: none;
+    display: block;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 1.33;
+    text-align: center;
+    color: #b8b5ae;
+    background-color: #e3dfd8;
+    font-family:"FucXed";
+}
+
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    width: 405px;
+    max-width: 100%;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    font-size: 1.125rem;
+    padding: .8125rem 1rem .75rem;
+    margin: 20px auto;
+}
