@@ -46,13 +46,15 @@ table {
 
 h1 {
     font-size: 3rem;
+    text-align: center;
+    padding: 40px;
 }
 h2 {
     font-size: 1.8rem;
     margin-bottom: 0px;
     
     padding: 40px;
-    padding-top: 50px;
+    padding-top: 20px;
     line-height: 2.8rem; 
 }
 h3 {
@@ -62,7 +64,7 @@ h4 {
     font-size: 1.3rem;
 }
 
-div#content {
+div.slide-inner {
     max-width: 1000px;
     margin: auto;
 }
@@ -72,4 +74,8 @@ div.answer {
     padding: 19px;
     margin: 32px;
     background-color: hsla(170, 39%, 89.4%, 1);
+}
+
+div.progress {
+    font-size: 1rem;
 }
