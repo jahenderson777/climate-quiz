@@ -44,8 +44,9 @@
 (xf/reg-event-db
  :merge
  (fn [db [_ data]]
-   ;(merge db data)
-   (assoc db :quiz (subvec (:quiz data) 0 3))))
+   (merge db data)
+   ;(assoc db :quiz (subvec (:quiz data) 0 3))
+   ))
 
 (xf/reg-event-fx
  :select-answer
