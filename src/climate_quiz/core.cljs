@@ -120,7 +120,7 @@
    "rgb(255, 193, 80)"
    "rgb(207, 98, 151)"
    "rgb(230, 89, 80)"
-   "rgb(86, 146, 220)"
+   "rgb(86, 196, 220)"
    "rgb(220, 80, 170)"])
 
 (defn answer-component [idx answer q-id selected]
@@ -207,11 +207,7 @@
   (let [user-will-help (<sub [:get :user-will-help])
         user-helped (<sub [:get :user-helped])]
     [:<>
-     [:header {:style {:position "fixed"
-                       :height 66
-                       :background-color (hsl 20 20 10)
-                       :width "100%"
-                       :z-index 1000}}
+     [:header
       "CLIMATE QUIZ"]
      [:div#content
       (for [q-id (range (min (<sub [:current-question])

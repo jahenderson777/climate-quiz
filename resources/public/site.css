@@ -98,6 +98,12 @@ header {
     text-align: center;
     font-size: 43px;
     font-family:"FucXed";
+
+    position: fixed;
+    height: 66;
+    background-color: black;
+    width: 100%;
+    z-index: 1000;
 }
 
 button {
@@ -135,9 +141,9 @@ input {
     letter-spacing: normal;
     word-spacing: normal;
     margin: 80px auto 60px;
-    width: 315px;
+    width: 265px;
     display: block;
-    font-size: 23px;
+    font-size: 22px;
     text-transform: none;
     text-indent: 0px;
     text-shadow: none;
@@ -171,8 +177,7 @@ input {
     background-color: #344f8b;
 }
 
-@media only screen 
-  and (max-device-width: 568px)
+@media (max-device-width: 568px), (max-device-height: 768px)
 {
     h2 {
         font-size: 17px;
@@ -184,5 +189,15 @@ input {
         padding: 11px;
         font-size: 19px;
         margin: 10px;
+    }
+
+    header {
+        padding: 8px;
+        font-size: 23px;
+        height: 46;
+    }
+
+    div.slide {
+        padding-top: 47px;
     }
 }
