@@ -189,6 +189,7 @@ img.wood-block {
     max-width: 700px;
     bottom: 0px;
     right: 0px;
+    pointer-events: none;
 }
 
 @media (max-device-width: 568px), (max-device-height: 700px)
