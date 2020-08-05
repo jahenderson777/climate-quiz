@@ -22,8 +22,8 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
     border: 0;
-    text-size-adjust: 200%;
-	vertical-align: baseline;
+    /*text-size-adjust: 200%;
+	vertical-align: baseline;*/
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -35,21 +35,7 @@ body {
     font-size: 19px;
     font-family: 'Crimson Text', serif;
 }
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+
 
 h1 {
     font-size: 45px;
@@ -104,42 +90,36 @@ header {
     padding: 15px;
     box-sizing: border-box;
     text-align: center;
-    font-size: 2.4rem;
+    font-size: 63px;
     font-family:"FucXed";
 }
 
-.btn-sign {
+button {
     width: 465px;
     max-width: 100%;
-    margin: 80px auto 60px;
+    margin: 40px auto 40px;
     padding: 16px;
     border: none;
     outline: none;
     display: block;
     text-transform: uppercase;
-    font-size: 25px;
+    font-size: 26px;
     line-height: 1.33;
     text-align: center;
     color: #393e41;
     background-color: rgb(60, 200, 85);
     font-family:"FucXed";
+    cursor: pointer;
+}
+
+.btn-sign {
+    color: #393e41;
+    background-color: rgb(60, 200, 85);
 }
 
 .btn-no {
-    width: 465px;
-    max-width: 100%;
-    margin: 30px auto;
-    padding: 16px;
-    border: none;
-    outline: none;
-    display: block;
-    text-transform: uppercase;
-    font-size: 25px;
-    line-height: 1.33;
-    text-align: center;
     color: #b8b5ae;
     background-color: #e3dfd8;
-    font-family:"FucXed";
 }
 
 input {
@@ -148,15 +128,39 @@ input {
     color: -internal-light-dark(black, white);
     letter-spacing: normal;
     word-spacing: normal;
-    margin: 20px auto;
+    margin: 80px auto 60px;
     width: 515px;
-    
-    font-size: 1.8rem;
+    display: block;
+    font-size: 33px;
     text-transform: none;
     text-indent: 0px;
     text-shadow: none;
-    display: block;
     text-align: start;
     appearance: textfield;
     padding: .8125rem 1rem .75rem;
+}
+
+.btn-facebook img, .btn-twitter img, .btn-whatsapp img {
+    vertical-align: middle;
+    margin-right: 15px;
+    margin-top: -5px;
+}
+
+.btn-facebook {
+    width: 320px;
+    max-width: 100%;
+    margin: 0 30px 0 0;
+    padding: 16px;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font-family: Helvetica, sans-serif;
+    vertical-align: top;
+    text-transform: none;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.33;
+    text-align: center;
+    color: #ffffff;
+    background-color: #344f8b;
 }

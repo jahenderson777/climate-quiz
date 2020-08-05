@@ -45,7 +45,7 @@
  :merge
  (fn [db [_ data]]
    (merge db data)
-   ;(assoc db :quiz (subvec (:quiz data) 0 3))
+   ;(assoc db :quiz (subvec (:quiz data) 0 2))
    ))
 
 (xf/reg-event-fx
@@ -171,36 +171,45 @@
 (defn complete-block []
   [slide {:hue 300 :dir 180 :bg "rgb(152, 68, 151)"}
    [:div {:style {:color "#fff"}}
-    [:h1 "Thank you!"]
-    [:h2 (str "You scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]]])
+    [:h1 "Great job!"]
+    [:h2 (str "You scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]
+    [:h1 "Share this quiz with your friends to see if they can beat your score..."]
+    [:div {:style {:text-align "center"}}
+     [:button.btn-facebook {:on-click #(js/window.open 
+                                        (str "https://facebook.com/sharer.php?u="
+                                             (js/encodeURIComponent "https://quiz.earthics.org")))}
+      [:img {:src "icon-facebook.png"}]
+      "Share on Facebook"]]]])
 
 (defn ask-for-help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(68, 151, 152)"}
    [:div {:style {:color "#fff"}}
     [:h1 "Quiz complete!"]
-    [:h2 "While you wait for your results will you spare 10 seconds to sign a petition demanding the UK governemnt take more urgent action on the climate emergency?"]
-    [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-will-help] true])}
-     "OF COURSE - ADD MY NAME"]
-    [:button.btn-no {:on-click #(xf/dispatch [:set [:user-will-help] false])} 
-     "NO, SORRY"]]])
+    [:h2 "While you wait for your results will you sign a petition demanding the UK governemnt take more urgent action on the climate emergency?"]
+    [:div 
+     [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-will-help] true])}
+           "OF COURSE - ADD MY NAME"]]
+    [:div 
+     [:button.btn-no {:on-click #(xf/dispatch [:set [:user-will-help] false])} 
+           "NO, SORRY"]]]])
 
 (defn help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(151, 152, 68)"}
    [:div {:style {:color "#fff"}}
-  
     [:h2 "Enter your email"]
-    [:input {:type "text" :name "email" :placeholder "Email"}]
+    [:div
+     [:input {:type "text" :name "email" :placeholder "Email"}]]
     
-  
-    [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
-     "SIGN"]]])
+    [:div 
+     [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
+           "SIGN"]]]])
 
 (defn main []
   (let [user-will-help (<sub [:get :user-will-help])
         user-helped (<sub [:get :user-helped])]
     [:<>
      [:header {:style {:position "fixed"
-                       :height 70
+                       :height 90
                        :background-color (hsl 20 20 10)
                        :width "100%"
                        :z-index 1000}}
