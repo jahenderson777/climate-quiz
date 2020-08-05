@@ -6,6 +6,10 @@
     font-display:swap
 }
 
+@-ms-viewport{
+    width: device-width;
+  }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -32,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    font-size: 19px;
+    font-size: 17px;
     font-family: 'Crimson Text', serif;
 }
 
@@ -44,12 +48,11 @@ h1 {
     font-weight: 700;
 }
 h2 {
-    font-size: 33px;
+    font-size: 23px;
     margin-bottom: 0px;
     font-weight: 700;
-    padding: 35px;
-    padding-top: 20px;
-    line-height: 2.8rem; 
+    padding: 15px;
+    line-height: 30px; 
 }
 h3 {
     font-size: 1.6rem;
@@ -64,7 +67,7 @@ div#content {
 }
 
 div.slide {
-    padding-top: 100px;
+    padding-top: 77px;
 }
 
 div.slide-inner {
@@ -72,25 +75,20 @@ div.slide-inner {
     margin: auto;
 }
 
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
 
-}
 
 div.answer {
     cursor:pointer;
-    padding: 19px;
-    font-size: 25px;
-    margin: 32px;
+    padding: 15px;
+    font-size: 19px;
+    margin: 20px;
     background-color: hsla(170, 39%, 100%, 1);
 }
 
 div.progress {
     font-size: 1.3rem;
-    
+    padding: 10px;
+    text-align: center;
 }
 
 header {
@@ -98,20 +96,20 @@ header {
     padding: 15px;
     box-sizing: border-box;
     text-align: center;
-    font-size: 63px;
+    font-size: 43px;
     font-family:"FucXed";
 }
 
 button {
-    width: 465px;
+    width: 265px;
     max-width: 100%;
     margin: 40px auto 40px;
-    padding: 16px;
+    padding: 13px;
     border: none;
     outline: none;
     display: block;
     text-transform: uppercase;
-    font-size: 26px;
+    font-size: 22px;
     line-height: 1.33;
     text-align: center;
     color: #393e41;
@@ -137,9 +135,9 @@ input {
     letter-spacing: normal;
     word-spacing: normal;
     margin: 80px auto 60px;
-    width: 515px;
+    width: 315px;
     display: block;
-    font-size: 33px;
+    font-size: 23px;
     text-transform: none;
     text-indent: 0px;
     text-shadow: none;
@@ -155,20 +153,36 @@ input {
 }
 
 .btn-facebook {
-    width: 320px;
+    width: 265px;
     max-width: 100%;
-    margin: 0 30px 0 0;
-    padding: 16px;
+    
+    padding: 14px;
     border: none;
     outline: none;
     display: inline-block;
     font-family: Helvetica, sans-serif;
     vertical-align: top;
     text-transform: none;
-    font-size: 26px;
+    font-size: 21px;
     font-weight: bold;
     line-height: 1.33;
     text-align: center;
     color: #ffffff;
     background-color: #344f8b;
+}
+
+@media only screen 
+  and (max-device-width: 568px)
+{
+    h2 {
+        font-size: 17px;
+        padding: 7px;
+        line-height: 23px; 
+    }
+
+    div.answer {
+        padding: 11px;
+        font-size: 19px;
+        margin: 10px;
+    }
 }

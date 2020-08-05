@@ -158,8 +158,7 @@
     [slide {:bg (nth colors (mod q-id (count colors)))
             :hue (* 90 q-id)
             :dir (if (even? q-id) 90 270)}
-     [:div.progress {:style {:padding 20
-                             :text-align "center"}}
+     [:div.progress
       (str "Question " (inc q-id) " of " (<sub [:num-questions]))]
      [:h2 question]
      (map-indexed
@@ -173,7 +172,7 @@
    [:div {:style {:color "#fff"}}
     [:h1 "Great job!"]
     [:h2 (str "You scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]
-    [:h1 "Share this quiz with your friends to see if they can beat your score..."]
+    [:h2 "Share this quiz with your friends to see if they can beat your score..."]
     [:div {:style {:text-align "center"}}
      [:button.btn-facebook {:on-click #(js/window.open 
                                         (str "https://facebook.com/sharer.php?u="
@@ -194,7 +193,7 @@
            "NO, SORRY"]]]])
 
 (defn help-block []
-  [slide {:hue 300 :dir 180 :bg "rgb(151, 152, 68)"}
+  [slide {:hue 300 :dir 180 :bg "rgb(153, 122, 48)"}
    [:div {:style {:color "#fff"}}
     [:h2 "Enter your email"]
     [:div
@@ -209,7 +208,7 @@
         user-helped (<sub [:get :user-helped])]
     [:<>
      [:header {:style {:position "fixed"
-                       :height 90
+                       :height 66
                        :background-color (hsl 20 20 10)
                        :width "100%"
                        :z-index 1000}}
