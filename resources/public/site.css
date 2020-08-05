@@ -42,9 +42,9 @@ body {
 
 
 h1 {
-    font-size: 45px;
+    font-size: 32px;
     text-align: center;
-    padding: 40px;
+    padding: 20px;
     font-weight: 700;
 }
 h2 {
@@ -181,15 +181,54 @@ input {
     color: #ffffff;
     background-color: #344f8b;
 }
+
+.show-answers {
+    width: 320px;
+    background-color: peru;
+    color: white;
+}
+
 img.wood-block {
     position: absolute;
     z-index: 2000;
-    opacity: 0.04;
+    opacity: 0.08;
     width: 100%;
     max-width: 700px;
     bottom: 0px;
     right: 0px;
     pointer-events: none;
+}
+
+.correct-answers {
+    background-color: rgb(199, 235, 240);
+    color: black;
+    padding: 10px;
+}
+
+.correct-answers-question {
+    font-weight: 700;
+ 
+}
+
+.correct-answers-correct {
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(120, 250, 185);
+}
+
+.correct-answers-title {
+    font-size: 15px;
+    text-align: center;
+    padding-bottom: 8px;
+    font-style: italic;
+}
+
+h1.result {
+    font-family: "FucXed";
+}
+
+h2.share-this {
+    padding: 30px;
 }
 
 @media (max-device-width: 568px), (max-device-height: 700px)

@@ -44,8 +44,8 @@
 (xf/reg-event-db
  :merge
  (fn [db [_ data]]
-   (merge db data)
-   ;(assoc db :quiz (subvec (:quiz data) 0 2))
+   ;(merge db data)
+   (assoc db :quiz (subvec (:quiz data) 0 2))
    ))
 
 (xf/reg-event-fx
@@ -67,6 +67,8 @@
  (fn [_]
    (inc (count (filter :selected (xf/<- [:get :quiz]))))))
 
+
+
 (xf/reg-sub
  :questions
  (fn [_]
@@ -75,6 +77,15 @@
              0
              (xf/<- [:get :current-question]))
      [])))
+
+(xf/reg-sub
+ :incorrect-questions
+ (fn [_]
+   (filter 
+    (fn [q]
+      (not= (:selected q)
+         (:correct-index q)))
+    (xf/<- [:get :quiz]))))
 
 (xf/reg-sub
  :complete?
@@ -97,6 +108,20 @@
  :num-questions
  (fn [_]
    (count (xf/<- [:get :quiz]))))
+
+(xf/reg-sub
+ :pct-correct
+ (fn [_]
+   (/ (xf/<- [:num-correct])
+      (xf/<- [:num-questions]))))
+
+(xf/reg-sub
+ :well-done-msg
+ (fn [_]
+   (let [pct (xf/<- [:pct-correct])]
+     (cond (= pct 1) "Awesome!"
+           (> pct 0.7) "Well done!"
+           :else "Good try"))))
 
 (defn hsl
   ([hue sat lightness]
@@ -184,18 +209,42 @@
         [answer-component idx answer q-id selected])
       answers)]))
 
+(defn correct-answers-block []
+  [:div.correct-answers
+   [:div.correct-answers-title "correct answers"]
+   (for [q (<sub [:incorrect-questions])
+         :let [question (:question q)
+               answers (:answers q)
+               correct-answer (nth answers (:correct-index q))
+               selected-answer (nth answers (:selected q))]]
+     ^{:key (:question q)}
+     [:div
+      [:div.correct-answers-question question]
+      ;[:div.correct-answers-selected selected-answer]
+      [:div.correct-answers-correct correct-answer]])])
+
 (defn complete-block []
-  [slide {:hue 300 :dir 180 :bg "rgb(152, 68, 151)"}
-   [:div {:style {:color "#fff"}}
-    [:h1 "Great job!"]
-    [:h2 (str "You scored " (<sub [:num-correct]) " out of " (<sub [:num-questions]))]
-    [:h2 "Share this quiz with your friends to see if they can beat your score..."]
-    [:div {:style {:text-align "center"}}
-     [:button.btn-facebook {:on-click #(js/window.open 
-                                        (str "https://facebook.com/sharer.php?u="
-                                             (js/encodeURIComponent "https://quiz.earthics.org")))}
-      [:img {:src "icon-facebook.png"}]
-      "Share on Facebook"]]]])
+  (let [num-correct (<sub [:num-correct])
+        num-questions (<sub [:num-questions])
+        show-answers (<sub [:get :show-answers])]
+    [slide {:hue 300 :dir 180 :bg "rgb(212, 148, 231)"}
+     [:img.wood-block {:src "bird.svg"}]
+     [:div ;{:style {:color "#fff"}}
+      [:h1.result (<sub [:well-done-msg])]
+      [:h1 (str "You scored " num-correct " out of " num-questions)]
+      (when (< (<sub [:pct-correct])
+               1)
+        (if show-answers
+          [correct-answers-block]
+          [:button.show-answers {:on-click #(xf/dispatch [:set [:show-answers] true])}
+           "Show me where I went wrong"]))
+      [:h2.share-this "Share this quiz with your friends to see if they can beat your score..."]
+      [:div {:style {:text-align "center"}}
+       [:button.btn-facebook {:on-click #(js/window.open 
+                                          (str "https://facebook.com/sharer.php?u="
+                                               (js/encodeURIComponent "https://quiz.earthics.org")))}
+        [:img {:src "icon-facebook.png"}]
+        "Share on Facebook"]]]]))
 
 (defn ask-for-help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(68, 151, 152)"}
