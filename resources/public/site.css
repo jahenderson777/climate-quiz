@@ -177,7 +177,7 @@ input {
     background-color: #344f8b;
 }
 
-@media (max-device-width: 568px), (max-device-height: 768px)
+@media (max-device-width: 568px), (max-device-height: 700px)
 {
     h2 {
         font-size: 17px;
