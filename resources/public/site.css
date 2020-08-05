@@ -68,11 +68,15 @@ div#content {
 
 div.slide {
     padding-top: 77px;
+    z-index: 5;
+    overflow: hidden;
+    position: relative;
 }
 
 div.slide-inner {
     max-width: 1000px;
     margin: auto;
+    z-index: 10;
 }
 
 
@@ -175,6 +179,15 @@ input {
     text-align: center;
     color: #ffffff;
     background-color: #344f8b;
+}
+img.wood-block {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.1;
+    width: 100%;
+    max-width: 700px;
+    bottom: 0px;
+    right: 0px;
 }
 
 @media (max-device-width: 568px), (max-device-height: 700px)

@@ -123,6 +123,20 @@
    "rgb(86, 196, 220)"
    "rgb(220, 80, 170)"])
 
+(def wood-blocks 
+  ["bug"
+   "bee_side"
+   "ant"
+  ; "spider"
+   "tree"
+   "bee"
+   "hourglass"
+   "bee2"
+   "orchid"
+   "bird2"
+   "butterfly"
+   "bird"])
+
 (defn answer-component [idx answer q-id selected]
   [:> (.-div motion) {:class "answer"
                       :initial #js {:opacity 0}
@@ -136,7 +150,7 @@
      :whileTap #js {:opacity 0.5}}
     answer]])
 
-(defn slide [{:keys [hue dir bg]} & content]
+(defn slide [{:keys [hue dir bg bg-svg]} & content]
   (let [ref (uix/ref)]
     (uix/effect! (fn []
                    (js/window.scrollTo #js {:left 0
@@ -146,16 +160,19 @@
     [:div.slide {:ref ref
                  :style {:min-height (second (<sub [:get :window-size]))
                          :background-color bg
+                         
                          #_#_:background (gradient dir
-                                               [hue 10 90 1 0]
-                                               [hue 10 90 1 60]
-                                               [0 70 88 1 100])}}
+                                                   [hue 10 90 1 0]
+                                                   [hue 10 90 1 60]
+                                                   [0 70 88 1 100])}}
+     [:img.wood-block {:src (str bg-svg ".svg")}]
      [:div.slide-inner
       content]]))
 
 (defn question [q-id]
   (let [{:keys [question answers correct-index selected]} (<sub [:get :quiz q-id])]
     [slide {:bg (nth colors (mod q-id (count colors)))
+            :bg-svg (nth wood-blocks (mod q-id (count wood-blocks)))
             :hue (* 90 q-id)
             :dir (if (even? q-id) 90 270)}
      [:div.progress
