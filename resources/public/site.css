@@ -224,6 +224,10 @@ img.wood-block {
 }
 
 h1.result {
+    font-size: 28px;
+}
+
+h1.well-done {
     font-family: "FucXed";
 }
 

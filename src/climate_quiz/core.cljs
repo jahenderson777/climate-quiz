@@ -210,7 +210,9 @@
       answers)]))
 
 (defn correct-answers-block []
-  [:div.correct-answers
+  [:> (.-div motion) {:class "correct-answers"
+                      :initial #js {:scaleY 0}
+                      :animate #js {:scaleY 1}}
    [:div.correct-answers-title "correct answers"]
    (for [q (<sub [:incorrect-questions])
          :let [question (:question q)
@@ -230,8 +232,8 @@
     [slide {:hue 300 :dir 180 :bg "rgb(212, 148, 231)"}
      [:img.wood-block {:src "bird.svg"}]
      [:div ;{:style {:color "#fff"}}
-      [:h1.result (<sub [:well-done-msg])]
-      [:h1 (str "You scored " num-correct " out of " num-questions)]
+      [:h1.well-done (<sub [:well-done-msg])]
+      [:h1.result (str "You scored " num-correct " out of " num-questions)]
       (when (< (<sub [:pct-correct])
                1)
         (if show-answers
@@ -248,6 +250,7 @@
 
 (defn ask-for-help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(68, 151, 152)"}
+   [:img.wood-block {:src "butterfly.svg"}]
    [:div {:style {:color "#fff"}}
     [:h1 "Quiz complete!"]
     [:h2 "While you wait for your results will you sign a petition demanding the UK governemnt take more urgent action on the climate emergency?"]
@@ -260,6 +263,7 @@
 
 (defn help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(153, 122, 48)"}
+   [:img.wood-block {:src "bee.svg"}]
    [:div {:style {:color "#fff"}}
     [:h2 "Enter your email"]
     [:div
