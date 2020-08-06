@@ -20,7 +20,7 @@
             "correct-index": 3
         },
         {
-            "question": "Under the ‘Paris agreement’, 197 countries made pledges that try to keep the global average temperature rise to less than 2 C by 2100. How many developed countries have initiated plans that meet their pledges?",
+            "question": "Under the ‘Paris agreement’, 197 countries made pledges that try to keep the global average temperature rise to less than 2°C by 2100. How many developed countries have initiated plans that meet their pledges?",
             "answers": [
                 "none",
                 "only a few",
@@ -31,7 +31,7 @@
             "correct-index": 0
         },
         {
-            "question": "2° warming doesn’t sound like much. Why does it matter?",
+            "question": "2°C warming doesn’t sound like much. Why does it matter?",
             "answers": [
                 "It doesn't matter",
                 "It will increase levels of sunburn and skin cancer",
@@ -43,11 +43,11 @@
         {
             "question": "If all countries keep their Paris pledges what will be the increase in average global temperature by 2100? ",
             "answers": [
-                "1.2 C",
-                "1.7 C",
-                "2.0 C",
-                "2.2 C",
-                "3.0 C"
+                "1.2°C",
+                "1.7°C",
+                "2.0°C",
+                "2.2°C",
+                "3.0°C"
             ],
             "correct-index": 4
         },
@@ -111,7 +111,7 @@
             "correct-index": 2
         },
         {
-            "question": "Fish stocks in the oceans are classed as either Crashed, Over-Exploited. Fully-Exploited, or Under-Exploited by mankind. Since 2003, what percentage of fish stocks have remained under-exploited?",
+            "question": "Fish stocks in the oceans are classed as either Crashed, Over-Exploited, Fully-Exploited, or Under-Exploited by mankind. Since 2003, what percentage of fish stocks have remained under-exploited?",
             "answers": [
                 "50%",
                 "25%",
@@ -131,7 +131,7 @@
             "correct-index": 3
         },
         {
-            "question": "If the global average temperature rises above 1.5 C there is a risk of triggering tipping points that release unstoppable and irreversible changes leading to climate breakdown. If carbon emissions are cut by 45% in the next 10 years, and reach zero by 2050, what are the chances of staying below 1.5 C?",
+            "question": "If the global average temperature rises above 1.5°C there is a risk of triggering tipping points that release unstoppable and irreversible changes leading to climate breakdown. If carbon emissions are cut by 45% in the next 10 years, and reach zero by 2050, what are the chances of staying below 1.5°C?",
             "answers": [
                 "very good",
                 "good",
@@ -142,7 +142,7 @@
             "correct-index": 2
         },
         {
-            "question": "Would you put your children and grandchildren on a plane if there was only a 50% chance it would crash?",
+            "question": "Would you put your children and grandchildren on a plane if there was a 50% chance it would crash?",
             "answers": [
                 "yes",
                 "possibly",
