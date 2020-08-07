@@ -44,7 +44,11 @@
 (xf/reg-event-db
  :merge
  (fn [db [_ data]]
-   (merge db data)
+   (let [quiz (:quiz data)
+         quiz-numbered (vec (map-indexed (fn [idx q]
+                                           (assoc q :idx idx))
+                                         quiz))]
+     (assoc db :quiz quiz-numbered))
    ;(assoc db :quiz (subvec (:quiz data) 0 2))
    ))
 
@@ -190,19 +194,33 @@
                                                    [hue 10 90 1 0]
                                                    [hue 10 90 1 60]
                                                    [0 70 88 1 100])}}
-     [:img.wood-block {:src (str bg-svg ".svg")}]
-     [:div.slide-inner
-      content]]))
+     (when bg-svg [:img.wood-block {:src (str bg-svg ".svg")}])
+     (into [:div.slide-inner]
+           content)]))
 
-(defn question [q-id]
-  (let [{:keys [question answers correct-index selected]} (<sub [:get :quiz q-id])]
+(defn question-block [q-id]
+  (let [{:keys [question answers correct-index selected
+                show-reference reference link
+                open-reference]} (<sub [:get :quiz q-id])]
     [slide {:bg (nth colors (mod q-id (count colors)))
             :bg-svg (nth wood-blocks (mod q-id (count wood-blocks)))
             :hue (* 90 q-id)
             :dir (if (even? q-id) 90 270)}
+     ^{:key :progress}
      [:div.progress
       (str "Question " (inc q-id) " of " (<sub [:num-questions]))]
+     ^{:key :question}
      [:h2 question]
+     (when show-reference
+       ^{:key :ref}
+       [:div.reference 
+        (if-not open-reference
+          [:div.open-reference {:on-click #(xf/dispatch [:set [:quiz q-id :open-reference] true])}
+           "reference"]          
+          (if link
+            [:a {:href link :target "_blank"}
+             reference]
+            [:div reference]))])
      (map-indexed
       (fn [idx answer]
         ^{:key idx}
@@ -215,15 +233,25 @@
                       :animate #js {:scaleY 1}}
    [:div.correct-answers-title "correct answers"]
    (for [q (<sub [:incorrect-questions])
-         :let [question (:question q)
-               answers (:answers q)
+         :let [{:keys [answers open-reference-end link reference idx question]} q
                correct-answer (nth answers (:correct-index q))
                selected-answer (nth answers (:selected q))]]
      ^{:key (:question q)}
      [:div
-      [:div.correct-answers-question question]
+      [:div.correct-answers-question (str (inc idx) ". ")question]
       ;[:div.correct-answers-selected selected-answer]
-      [:div.correct-answers-correct correct-answer]])])
+      [:div.correct-answers-correct 
+       correct-answer
+       (when reference
+         [:div.reference-end
+          (if-not open-reference-end
+            [:div.open-reference {:on-click #(xf/dispatch [:set [:quiz idx :open-reference-end] true])}
+             "reference"]
+            (if link
+              [:a {:href link :target "_blank"}
+               reference]
+              [:div reference]))])]
+      [:hr]])])
 
 (defn complete-block []
   (let [num-correct (<sub [:num-correct])
@@ -283,7 +311,7 @@
       (for [q-id (range (min (<sub [:current-question])
                              (<sub [:num-questions])))]
         ^{:key q-id}
-        [question q-id])
+        [question-block q-id])
       
       (when (<sub [:complete?])
         [:<>

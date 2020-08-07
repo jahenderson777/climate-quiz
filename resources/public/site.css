@@ -234,8 +234,31 @@ h1.well-done {
 
 h2.share-this {
     padding: 30px;
-
 }
+
+div.reference {
+    text-align: right;
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+div.reference-end {
+    text-align: left;
+    font-size: 12px;
+    padding-top:  15px;
+}
+
+div.open-reference {
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-block;
+}
+
+hr {
+    border-top: 1px solid grey;
+    border-bottom: none;
+    margin-bottom: 30px;
+  }
 
 @media (max-device-width: 568px), (max-device-height: 700px)
 {
