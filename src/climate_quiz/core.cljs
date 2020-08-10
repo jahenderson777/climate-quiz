@@ -253,6 +253,42 @@
               [:div reference]))])]
       [:hr]])])
 
+(defn all-answers-block []
+  [:> (.-div motion) {:class "correct-answers"
+                      :style {:originY 0}
+                      :initial #js {:scaleY 0}
+                      :animate #js {:scaleY 1}}
+   (for [q (<sub [:get :quiz])
+         :let [{:keys [answers open-reference-end link reference show-reference idx question]} q
+               correct-answer (nth answers (:correct-index q))
+               selected-answer (nth answers (:selected q))]]
+     ^{:key (:question q)}
+     [:div
+      [:div.correct-answers-question (str (inc idx) ". ") question]
+      [:div.corrections
+       (if (= (:correct-index q) (:selected q))
+         [:div.correct "✓"]
+         [:div 
+          [:div.correct-answers-title "your answer"]
+          [:div.correct-answers-selected selected-answer]])
+       [:div
+        (when (not= (:correct-index q) (:selected q))
+          [:div.correct-answers-title "correct answer"])
+        [:div.correct-answers-correct
+         correct-answer
+         ]]
+       ]
+      (when show-reference
+        [:div.reference-end
+         (if-not open-reference-end
+           [:div.open-reference {:on-click #(xf/dispatch [:set [:quiz idx :open-reference-end] true])}
+            "reference"]
+           (if link
+             [:a {:href link :target "_blank"}
+              reference]
+             [:div reference]))])
+      [:hr]])])
+
 (defn complete-block []
   (let [num-correct (<sub [:num-correct])
         num-questions (<sub [:num-questions])
@@ -265,9 +301,9 @@
       (when (< (<sub [:pct-correct])
                1)
         (if show-answers
-          [correct-answers-block]
+          [all-answers-block]
           [:button.show-answers {:on-click #(xf/dispatch [:set [:show-answers] true])}
-           "Show me where I went wrong"]))
+           "Give me my score breakdown"]))
       [:h2.share-this "Share this quiz with your friends to see if they can beat your score..."]
       [:div {:style {:text-align "center"}}
        [:button.btn-facebook {:on-click #(js/window.open 

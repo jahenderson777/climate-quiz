@@ -217,10 +217,16 @@ img.wood-block {
     background-color: rgb(120, 250, 185);
 }
 
+.correct-answers-selected {
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(247, 201, 201);
+}
+
 .correct-answers-title {
     font-size: 15px;
     text-align: center;
-    padding-bottom: 8px;
+    padding: 0px;
     font-style: italic;
 }
 
@@ -246,6 +252,8 @@ div.reference-end {
     text-align: left;
     font-size: 12px;
     padding-top:  15px;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 div.open-reference {
@@ -259,6 +267,34 @@ hr {
     border-bottom: none;
     margin-bottom: 30px;
   }
+  
+div.corrections {
+    display: flex;
+    padding-top: 7px;
+}
+
+div.corrections > div {
+width: 50%;
+}
+
+div.correct {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 50px;
+    padding-top: 24px;
+    color: #0b0;
+}
+
+@media (max-width: 900px)
+{
+    div.corrections {
+        display: block;
+    }
+    
+    div.corrections > div {
+    width: 100%;
+    }
+}
 
 @media (max-device-width: 568px), (max-device-height: 700px)
 {
