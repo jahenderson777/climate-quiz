@@ -312,30 +312,48 @@
         [:img {:src "icon-facebook.png"}]
         "Share on Facebook"]]]]))
 
+(defn help-block []
+  [:div {:style {:color "#fff"}}
+   [:a.action {:href "https://extinctionrebellion.uk/act-now/local-groups/" :target "_blank"}
+    "Join an Extinction Rebellion group near me"]
+   [:a.action {:href "https://docs.google.com/forms/d/e/1FAIpQLSdRJKz3N3INwMHmYtst5H0PDWyfFYFzQtc6vh8eIQUGqCJqWA/viewform" :target "_blank"}
+    "Attend a zoom talk about how to ensure the government does make these radical changes"]
+   [:div
+    [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
+     "SHOW ME MY RESULTS"]]])
+
 (defn ask-for-help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(68, 151, 152)"}
    [:img.wood-block {:src "butterfly.svg"}]
    [:div {:style {:color "#fff"}}
     [:h1 "Quiz complete!"]
-    [:h2 "While you wait for your results will you sign a petition demanding the UK governemnt take more urgent action on the climate emergency?"]
-    [:div 
-     [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-will-help] true])}
-           "OF COURSE - ADD MY NAME"]]
-    [:div 
-     [:button.btn-no {:on-click #(xf/dispatch [:set [:user-will-help] false])} 
-           "NO, SORRY"]]]])
+    [:h2 "Before we reveal your score will you join the groundswell of concerned citizens, demanding the radical changes required to keep our planet habitable?"]
+    (if (<sub [:get :user-will-help])
+      [help-block]
+      [:div
+       [:div 
+        [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-will-help] true])}
+         "YES! I WANT TO HELP"]]
+       [:div 
+        [:button.btn-no {:on-click #(xf/dispatch [:set [:user-will-help] false])} 
+         "NO, SORRY"]]])]])
 
-(defn help-block []
+(defn help-block_old []
   [slide {:hue 300 :dir 180 :bg "rgb(153, 122, 48)"}
    [:img.wood-block {:src "bee.svg"}]
    [:div {:style {:color "#fff"}}
-    [:h2 "Enter your email"]
+    [:a.action {:href "https://extinctionrebellion.uk/act-now/local-groups/" :target "_blank"}
+     "Join an Extinction Rebellion group near me"]
+    [:a.action {:href "https://docs.google.com/forms/d/e/1FAIpQLSdRJKz3N3INwMHmYtst5H0PDWyfFYFzQtc6vh8eIQUGqCJqWA/viewform" :target "_blank"}
+     "Attend a zoom talk about how to ensure the government does make these radical changes"]
     [:div
-     [:input {:type "text" :name "email" :placeholder "Email"}]]
-    
-    [:div 
      [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
-           "SIGN"]]]])
+      "SHOW ME MY RESULTS"]]
+    #_[:h2 "Enter your email"]
+    #_[:div
+     [:input {:type "text" :name "email" :placeholder "Email"}]]
+
+    ]])
 
 (defn main []
   (let [user-will-help (<sub [:get :user-will-help])
@@ -353,7 +371,7 @@
         [:<>
          ^{:key -1}
          [ask-for-help-block]
-         (when user-will-help
+         #_(when user-will-help
            ^{:key -2}
            [help-block])
          (when (or user-helped

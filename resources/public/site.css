@@ -111,7 +111,7 @@ header {
     z-index: 1000;
 }
 
-button {
+button, a.action {
     width: 265px;
     max-width: 100%;
     margin: 40px auto 40px;
@@ -129,9 +129,29 @@ button {
     cursor: pointer;
 }
 
+a.action {
+    width: 365px;
+    max-width: 100%;
+    margin: 40px auto 40px;
+    padding: 13px;
+    border: none;
+    outline: none;
+    display: block;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 1.33;
+    text-align: center;
+    color: #393e41;
+    background-color: rgb(60, 200, 85);
+    font-family:"FucXed";
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .btn-sign {
     color: #ffffff;
-    background-color: rgb(60, 200, 85);
+    background-color: rgb(167, 214, 215);
 }
 
 .btn-no {
@@ -318,5 +338,9 @@ div.correct {
 
     div.slide {
         padding-top: 47px;
+    }
+
+    a.action {
+        width: 265px;
     }
 }
