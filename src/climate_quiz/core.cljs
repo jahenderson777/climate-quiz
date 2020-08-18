@@ -56,7 +56,7 @@
  :select-answer
  (fn [db [_ q-id a-id]]
    {:db (assoc-in db [:quiz q-id :selected] a-id)
-    :http-post {:url "https://www.appezium.co.uk/quiz.php"
+    :http-post {:url "/analytics.php"
                 :params {:id (:id db)
                          :q-id q-id
                          :a-id a-id}}}))
