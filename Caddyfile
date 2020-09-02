@@ -1,4 +1,4 @@
-quiz.earthics.org
+quiz.earthics.org {
 
 root * /home/jonathan/climate-quiz/resources/public
 
@@ -7,3 +7,4 @@ file_server
 php_fastcgi /analytics.php unix//run/php/php7.4-fpm.sock
 
 respond /data.txt 404
+}
