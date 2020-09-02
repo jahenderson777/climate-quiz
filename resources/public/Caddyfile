@@ -2,6 +2,6 @@ quiz.earthics.org
 
 encode zstd gzip
 file_server
-php_fastcgi /quiz.php unix//run/php/php7.4-fpm.sock
+php_fastcgi /analytics.php unix//run/php/php7.4-fpm.sock
 
 respond /data.txt 404
