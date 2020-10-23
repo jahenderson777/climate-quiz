@@ -48,7 +48,9 @@
          quiz-numbered (vec (map-indexed (fn [idx q]
                                            (assoc q :idx idx))
                                          quiz))]
-     (assoc db :quiz quiz-numbered))
+     (assoc db 
+            :quiz quiz-numbered
+            :help-links (:helpLinks data)))
    ;(assoc db :quiz (subvec (:quiz data) 0 2))
    ))
 
@@ -243,7 +245,7 @@
       [:div.correct-answers-correct 
        correct-answer
        (when reference
-         [:div.reference-end
+         [:div.reference-end 
           (if-not open-reference-end
             [:div.open-reference {:on-click #(xf/dispatch [:set [:quiz idx :open-reference-end] true])}
              "reference"]
@@ -313,14 +315,16 @@
         "Share on Facebook"]]]]))
 
 (defn help-block []
-  [:div {:style {:color "#fff"}}
-   [:a.action {:href "https://extinctionrebellion.uk/act-now/local-groups/" :target "_blank"}
-    "Join an Extinction Rebellion group near me"]
-   [:a.action {:href "https://docs.google.com/forms/d/e/1FAIpQLSdRJKz3N3INwMHmYtst5H0PDWyfFYFzQtc6vh8eIQUGqCJqWA/viewform" :target "_blank"}
-    "Attend a zoom talk about how to ensure the government does make these radical changes"]
-   [:div
-    [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
-     "SHOW ME MY RESULTS"]]])
+  (let [help-links (<sub [:get :help-links])]
+    [:div {:style {:color "#fff"}}
+     (for [{:keys [text url]} help-links]
+       ^{:key url}
+       [:a.action {:href url :target "_blank"}
+        text])
+     [:div
+      [:button.btn-sign {:on-click #(xf/dispatch [:set [:user-helped] true])}
+       "SHOW ME MY RESULTS"]]]))
+
 
 (defn ask-for-help-block []
   [slide {:hue 300 :dir 180 :bg "rgb(68, 151, 152)"}

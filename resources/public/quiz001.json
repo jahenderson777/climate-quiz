@@ -195,5 +195,14 @@
             "correct-index": 2,
             "show-reference": false
         }
-    ]
+    ],
+    "helpLinks": [
+        {
+            "url": "https://extinctionrebellion.uk/act-now/local-groups/",
+            "text": "Join an Extinction Rebellion group near me"
+        },
+        {
+            "url": "https://docs.google.com/forms/d/e/1FAIpQLSdRJKz3N3INwMHmYtst5H0PDWyfFYFzQtc6vh8eIQUGqCJqWA/viewform",
+            "text": "Attend a zoom talk about how to ensure the government does make these radical changes"
+        }]
 }
